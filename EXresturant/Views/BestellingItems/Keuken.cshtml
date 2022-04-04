@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EXresturant.Models.Bestelling>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@ViewBag.MenukaarId
+<div class="whiteBackground" border>
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Keuken List</h2>
+        </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="col-6">
+                <h2 class="text-danger">Er is nog geen item</h2>
+            </div>
+            <div class="col-6 text-right">
+
+            </div>
+        }
+        else
+        {
+
+
+            <div class="col-12">
+                <table class="table table-striped table-dark border" style="background-color:#1e3144">
+                    <thead>
+                        <tr style=" background-color: #dc3545;">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tafelnummer)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsGereed)
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.IsGereed == false)
+                            {
+                                <tr>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.Tafelnummer)
+                                    </td>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.IsGereed)
+                                    </td>
+                                    <td style="width:150px">
+                                        <a name="button1" value="true" asp-controller="BestellingItems" asp-action="check" class="btn btn-success text-dark border-white ml-1" asp-route-id="@item.Id">
+                                            <i class="fas fa-utensils"></i>
+                                        </a>
+                                    </td>
+                                    <td style="width:350px">
+                                        <a name="button1" value="true" asp-controller="BestellingItems" asp-action="Details" class="btn btn-warning text-dark border-white ml-1" asp-route-id="@item.Id">
+                                            <i class="fas fa-info-circle"> Keuken</i>
+                                        </a>
+                                        <a name="button1" value="true" asp-controller="BestellingItems" asp-action="Ober" class="btn btn-primary text-dark border-white ml-1" asp-route-id="@item.Id">
+                                            <i class="fas fa-info-circle"> Ober</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+
+
+                        }
+                    </tbody>
+                </table>
+            </div>}
+    </div>
+</div>
+
+
+

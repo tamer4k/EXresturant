@@ -1,0 +1,115 @@
+﻿@model EXresturant.Models.Bestelling
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<h2 class="text-info">Create Bestelling</h2>
+
+<br>
+<form asp-action="Create" id="form">
+    <div class="whiteBackground border">
+
+        @*<div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Tafelnummer" class="control-label"></label>
+                    <select id="ddlCategories" asp-for="Tafelnummer" class="form-control" asp-items="ViewBag.MenukaartId"></select>
+                    <span asp-validation-for="Tafelnummer " class="text-danger"></span>
+                </div>
+            </div>*@
+        <div class="row">
+            <div class="col-2">
+                <input type="button" class="btn btn-primary " id="btnAdd" value="Add product" />
+            </div>
+            <div class="col-2">
+                <input type="button" class="btn btn-danger " id="btnRe" value="remove product" />
+            </div>
+            <div class="col-4 offset-2">
+                <partial name="CreateAndBackToListButtonPartial" />
+            </div>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Tafelnummer" class="col-form-label font-weight-bold"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="Tafelnummer" class="form-control" asp-items="ViewBag.ReserveringId"></select>
+            </div>
+        </div>
+        <div id="bestellingItemsContainer">
+            @Html.EditorFor(model => model.Items)
+        </div>
+
+    </div>
+</form>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#btnAdd").on('click', function () {
+            $.ajax({
+                async: true,
+                data: $('#form').serialize(),
+                type: "POST",
+                url: '/Bestellings/AddBestellingItem',
+                success: function (partialView) {
+                    console.log("partialView: " + partialView);
+                    $('#bestellingItemsContainer').html(partialView);
+                    $("#ddlCategories").on("change", function () {
+                        updateSubCategoriesList();
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#btnRe").click(function () {
+                $("#rowss").remove();
+            });
+        });
+    </script>
+    
+    <script>
+        function updateSubCategoriesList() {
+            var selectedMenukaart = document.getElementById("ddlCategories").value;
+            $list = $('#ddlSubCategories');
+            $.ajax({
+                url: '/Bestellings/GetProducts/' + selectedMenukaart,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    results = JSON.parse(data);
+                    $list.html('');
+                    var items = '';
+                    for (i in results) {
+                        items += '<option value="' + results[i].value + '">' + results[i].text + '</option>';
+                    }
+                    $list.html(items)
+                }
+            }
+
+            );
+        }
+        //$(document).ready(function () {
+
+        //    updateSubCategoriesList();
+        //});
+
+        $("#ddlCategories").on("change", function () {
+            updateSubCategoriesList();
+        });
+
+
+    </script>
+
+}

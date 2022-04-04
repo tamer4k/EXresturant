@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EXresturant.Models.BestellingItem>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+<div class="whiteBackground" border>
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Details List</h2>
+        </div>
+        <div class="col-3">
+            <h2 class="text-warning">Tafelnummer: @ViewBag.Tafelnummers</h2>
+            <h2 class="text-warning">OrderId: @ViewBag.OrderId</h2>
+        </div>
+
+
+        <div class="col-12">
+            <table class="table table-striped table-dark border" style="background-color:#1e3144">
+                <thead>
+                    <tr style=" background-color: #dc3545;">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Aantal)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.MenukaartId == 3)
+                        {
+                            <tr>
+                                <td class="text-white-50 font-weight-bold">
+                                    @Html.DisplayFor(modelItem => item.Product.Name)
+                                </td>
+                                <td class="text-white-50 font-weight-bold">
+                                    @Html.DisplayFor(modelItem => item.Aantal)
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <a asp-controller="BestellingItems" asp-action="Keuken" class="btn btn-success form-control">Back to List</a>
+        </div>
+    </div>
+</div>
+

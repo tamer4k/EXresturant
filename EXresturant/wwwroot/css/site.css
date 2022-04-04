@@ -1,0 +1,206 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+
+
+
+.navbar-nav .nav-link {
+
+    margin-left: 21px;
+    color: #999da0;
+    font-weight: 900;
+    font-family: 'initial';
+}
+
+    .navbar-nav .nav-link:hover {
+    }
+
+.webBackground {
+    background-image: url('../images/dust_scratches.png');
+}
+
+.whiteBackground {
+    background-color: rgb(0 0 0 / 25%);
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: #737373;
+}
+
+#divSubCategoriesList {
+    border: solid 3px #1b6ec2;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+.form-check-input {
+    position: absolute !important;
+    margin-top: .3rem !important;
+    margin-left: -0.25rem !important;
+}
+    .display-4 {
+    font-size: 8.5rem !important;
+    font-weight: 990 !important;
+    line-height: 1.2 !important;
+}
+
+/* table */
+.table.dataTable tbody tr {
+    background-color: #1b2b3b;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 2px solid #000 !important;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #ffffffe6 !important;
+}
+
+
+.dataTables_wrapper .dataTables_length select {
+    border: 2px solid #000 !important;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #ffffffe6 !important;
+    padding: 4px;
+}
+
+
+
+
+
+
+
+.custom-control-input {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+.custom-control-label {
+    padding: 0 !important;
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+    .custom-control-label:before {
+        background-color: #b7b7b7 !important;
+        border-radius: 3px !important;
+    }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #ff9200 !important;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+    color: #ff9200;
+    background-color: #dc3545 !important;
+    border-radius: 3px !important;
+}
+
+.custom-control-input:active ~ .custom-control-label::before {
+    background-color: #ff9200 !important;
+}
+
+/** focus shadow pinkish **/
+.custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 247, 0.25) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

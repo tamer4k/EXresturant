@@ -1,0 +1,85 @@
+﻿@model IEnumerable<EXresturant.Models.Bestelling>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="whiteBackground" border>
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Bestelling List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <partial name="CreateButtonPartial" />
+        </div>
+        @if (Model.Count() == 0)
+        {
+            <div class="col-6">
+                <h2 class="text-danger">Er is nog geen item</h2>
+            </div>
+            <div class="col-6 text-right">
+
+            </div>
+        }
+        else
+        {
+            <div class="col-12">
+                <table id="table_id" class="table table-striped table-dark border" style="background-color:#1e3144">
+                    <thead>
+                        <tr style=" background-color: #dc3545;">
+                            <th>
+                                @Html.DisplayNameFor(m => m.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Tafelnummer)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NumberOfItems)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsGereed)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DatumBesteld)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.IsBetaald == false)
+                            {
+                                <tr>
+                                    <td class="text-warning font-weight-bold">
+                                        @Html.DisplayFor(m => item.Id)
+                                    </td>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.Tafelnummer)
+                                    </td>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.NumberOfItems)
+                                    </td>
+                                    <td>
+                                        <div class="custom-control form-control-lg custom-checkbox">
+                                            <input asp-for="@item.IsGereed" readonly type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1"></label>
+                                        </div>
+                                    </td>
+                                    <td class="text-white-50 font-weight-bold">
+                                        @Html.DisplayFor(modelItem => item.DatumBesteld)
+                                    </td>
+                                    <td style="width:150px">
+                                        <partial name="OperationsButtonsPartial" model="item.Id" />
+
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>}
+    </div>
+</div>

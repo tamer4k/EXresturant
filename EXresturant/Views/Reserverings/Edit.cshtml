@@ -1,0 +1,146 @@
+﻿@model Reservering
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+
+<h2 class="text-info">Edit Reservering</h2>
+
+<br />
+
+@*<partial name="_StatusMessage" model="Model.StatusMessage" />*@
+
+
+<div class="whiteBackground border row">
+    <div class="col-8 border-right">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Name" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Name" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Tafelnummer" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Tafelnummer" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Tafelnummer"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="PhoneNummer" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="PhoneNummer" class="form-control" />
+                    <span class="text-danger" asp-validation-for="PhoneNummer"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Aantalpersoon" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Aantalpersoon" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Aantalpersoon"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Email" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Email" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Datum" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Datum" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Datum"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="BeginTijd" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="BeginTijd" class="form-control" />
+                    <span class="text-danger" asp-validation-for="BeginTijd"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label id="isAci" asp-for="IsGekomen" class="col-form-label font-weight-bold"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="IsGekomen" class="form-check-input" />
+                    <span asp-validation-for="IsGekomen" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="UpdateAndBackToListButtonPartial" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-3 offset-1">
+
+        <p>Existing Reservering</p>
+        <div id="divSubCategoriesList"></div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+
+
+    <script>
+
+        function updateSubCategoriesList() {
+            var selectedCategory = document.getElementById("ddlCategories").value;
+            $list = $('#divSubCategoriesList');
+            $.ajax({
+                url: '/SubCategories/GetSubCategories/' + selectedCategory,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    results = JSON.parse(data);
+                    $list.html('');
+                    $list.append('<ul class="list-group">');
+                    for (i in results) {
+                        $list.append('<li class="list-group-item">' + results[i].text + '</li>')
+                    }
+                    $list.append('</ul>');
+                }
+            }
+
+            );
+        }
+        $(document).ready(function () {
+
+            updateSubCategoriesList();
+        });
+
+
+    </script>
+
+
+}

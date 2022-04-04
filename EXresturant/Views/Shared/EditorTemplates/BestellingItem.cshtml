@@ -1,0 +1,26 @@
+﻿@model EXresturant.Models.BestellingItem
+<div class="row" id="rowss">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="MenukaartId" class="control-label"></label>
+            <select id="ddlCategories" asp-for="MenukaartId" class="form-control" asp-items="ViewBag.MenukaartId"></select>
+            <span asp-validation-for="MenukaartId " class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="ProductId" class="control-label"></label>
+            <select id="ddlSubCategories" asp-for="ProductId" class="form-control"  asp-items="ViewBag.ProductId"></select>
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label asp-for="Aantal" class="control-label"></label>
+            <input asp-for="Aantal" value="1" class="form-control" />
+            <span asp-validation-for="Aantal" class="text-danger"></span>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,77 @@
+﻿@model Reservering
+
+
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+
+<h2 class="text-info">Delete Reservering</h2>
+
+<br />
+
+<form asp-action="Delete" method="post">
+    <div class="whiteBackground border">
+
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(m => m.Id)
+        <input type="hidden" asp-for="Id" />
+        @*<input type="hidden" asp-for="Picture" />*@
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Tafelnummer" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Tafelnummer" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Email" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Email" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Aantalpersoon" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Aantalpersoon" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Datum" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Datum" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label id="isAci" asp-for="IsGekomen" class="col-form-label font-weight-bold"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="IsGekomen" disabled class="form-check-input" readonly />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="DeleteAndBackToListButtonPartial" />
+            </div>
+        </div>
+    </div>
+</form>

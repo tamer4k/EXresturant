@@ -1,0 +1,95 @@
+﻿@model Reservering
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+
+<h2 class="text-info">Details Reservering</h2>
+
+<br />
+
+
+<div class="whiteBackground border">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Id" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Id" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Name" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Name" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Tafelnummer" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Tafelnummer" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Email" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Email" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Datum" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Datum" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="BeginTijd" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="BeginTijd" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="DatumAangemak" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="DatumAangemak" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label asp-for="Aantalpersoon" class="col-form-label"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="Aantalpersoon" readonly class="form-control" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <label id="isAci" asp-for="IsGekomen" class="col-form-label font-weight-bold"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="IsGekomen" disabled class="form-check-input" readonly />
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-5 offset-2">
+            <partial name="EditAndBackToListButtonPartial" model="@Model.Id" />
+        </div>
+    </div>
+</div>
